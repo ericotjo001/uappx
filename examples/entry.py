@@ -86,6 +86,20 @@ def select_example(args, dargs,parser, TOGGLES):
         from .imagenet.imagenet_example import run_imagenet_example
         run_imagenet_example(args, dargs, parser)
 
+    elif dargs['data'] == 'imagenetv2':
+        print('imagenetv2')
+        WARNING_MSG = """ 
+        python main.py --mode example --data imagenetv2 --submode hyper 
+          >>> WARNING! The above command is highly experimental. It seems like having too many classes at once
+          is not yet feasible for kaBEDONN. For now, to use kaBEDONN on datasets with very large no of classes (>=1000),
+          only use --submode ces, as demonstrated with 'imagenet' above <<<        
+        """
+
+        import warnings
+        warnings.warn(WARNING_MSG)
+        from .imagenetv2.imagenetv2_example import run_imagenetv2_example
+        run_imagenetv2_example(args, dargs, parser)
+
     else:
         raise NotImplementedError('data choice not available')
 
@@ -128,7 +142,6 @@ python main.py --mode example --data cifar --submode result --kwidth 64
 
 def postprocessing(dargs):
     print('postprocessing entry')
-
 
     if dargs['mode'] == 'hyperboxplots':
         from .post_processing_utils.boxplots import arrange_boxplots_of_hyper_results 

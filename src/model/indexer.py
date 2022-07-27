@@ -111,9 +111,8 @@ class DataIndexer(kFetcher):
         return n_data_by_class        
 
     def create_queue_one_runthrough(self, config=None):
-        # run through all data once
-
         if config is None:
+            # run through all data once
             q = self.standard_queue_()
         elif config['mode']=='firstn':
             q = self.first_n_queue(config)

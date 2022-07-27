@@ -57,7 +57,7 @@ def imagenet_reshape(img, input_size):
     return img
 
 def prep_deep_neural_network_and_data_loader(dargs, parser, BOOLS, DIRS, device=None):
-    dnn = mod.resnet18(pretrained=True, progress=False)
+    dnn = mod.resnet18(weights=mod.ResNet18_Weights.DEFAULT, progress=False)
     dnn = dnn.to(device=device)
     dnn.eval()
 

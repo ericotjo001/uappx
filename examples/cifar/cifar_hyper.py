@@ -7,6 +7,9 @@ import numpy as np
 
 
 def cifar_hyper_(dargs, parser, BOOLS):
+    """
+    Experiment on data ordering as hyperparameter!
+    """
     parser.add_argument('--n_per_class', nargs='+', default=120) 
     args, unknown = parser.parse_known_args()
     dargs = vars(args)  # is a dictionary
